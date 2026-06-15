@@ -204,7 +204,7 @@ export default function DashboardPage() {
                 Coherent Dashboard
               </h1>
               <h2 className="text-sm text-black">
-                {dashboardName || 'Europe Refrigerant-to-Liquid Brazed Plate Heat Exchanger BPHE Market '}
+                {dashboardName || 'Europe Refrigerant-to-Liquid Brazed Plate Heat Exchanger (BPHE) Market (Focus on HVAC Applications Only) Dashboard '}
               </h2>
             </div>
           </div>

@@ -66,7 +66,7 @@ function CustomerInfoCells({ customer }: { customer: CustomerBase }) {
       <td className={`${tdBase} text-center`}>{customer.sNo}</td>
       <td className={tdBase}>{customer.customerCompanyName}</td>
       <td className={tdBase}>{customer.businessOverview}</td>
-      <td className={tdBase}>{customer.nonHvacCustomerEntityType}</td>
+      <td className={tdBase}>{customer.hvacCustomerEntityType}</td>
       <td className={tdBase}>{customer.bpheApplication}</td>
       <td className={tdBase}>{customer.annualRevenue}</td>
       <td className={tdBase}>{customer.sizeOperatingScale}</td>
@@ -118,10 +118,10 @@ function Proposition1Table() {
             <th className={`${thBase} bg-gray-100 min-w-[50px]`}>S.No.</th>
             <th className={`${thBase} bg-[#FFF8DC] min-w-[200px]`}>Customer / Company Name</th>
             <th className={`${thBase} bg-[#FFF8DC] min-w-[220px]`}>Business Overview</th>
-            <th className={`${thBase} bg-[#FFF8DC] min-w-[180px]`}>Non-HVAC Customer Entity Type</th>
+            <th className={`${thBase} bg-[#FFF8DC] min-w-[180px]`}>HVAC Customer Entity Type</th>
             <th className={`${thBase} bg-[#FFF8DC] min-w-[220px]`}>Refrigerant-to-Liquid BPHE Application</th>
             <th className={`${thBase} bg-[#FFF8DC] min-w-[200px]`}>
-              Annual Revenue in US$ Million / Process Cooling Budget Signal
+              Annual Revenue in US$ Million / HVAC Equipment Budget Signal
             </th>
             <th className={`${thBase} bg-[#FFF8DC] min-w-[160px]`}>Size / Operating Scale</th>
             <th className={`${thBase} bg-[#B0E0E6] min-w-[140px]`}>Key Contact Person</th>
@@ -166,10 +166,10 @@ function Proposition2Table() {
             <th className={`${thBase} bg-gray-100`}>S.No.</th>
             <th className={`${thBase} bg-[#FFF8DC] min-w-[200px]`}>Customer / Company Name</th>
             <th className={`${thBase} bg-[#FFF8DC] min-w-[220px]`}>Business Overview</th>
-            <th className={`${thBase} bg-[#FFF8DC] min-w-[180px]`}>Non-HVAC Customer Entity Type</th>
+            <th className={`${thBase} bg-[#FFF8DC] min-w-[180px]`}>HVAC Customer Entity Type</th>
             <th className={`${thBase} bg-[#FFF8DC] min-w-[220px]`}>Refrigerant-to-Liquid BPHE Application</th>
             <th className={`${thBase} bg-[#FFF8DC] min-w-[200px]`}>
-              Annual Revenue in US$ Million / Process Cooling Budget Signal
+              Annual Revenue in US$ Million / HVAC Equipment Budget Signal
             </th>
             <th className={`${thBase} bg-[#FFF8DC] min-w-[160px]`}>Size / Operating Scale</th>
             <th className={`${thBase} bg-[#B0E0E6] min-w-[140px]`}>Key Contact Person</th>
@@ -179,9 +179,9 @@ function Proposition2Table() {
             <th className={`${thBase} bg-[#B0E0E6] min-w-[160px]`}>LinkedIn Profile</th>
             <th className={`${thBase} bg-[#B0E0E6] min-w-[130px]`}>Website</th>
             <th className={`${thBase} bg-[#C5E8D8] min-w-[180px]`}>BPHE Purchase Criteria</th>
-            <th className={`${thBase} bg-[#C5E8D8] min-w-[180px]`}>Process Cooling Pain Points</th>
+            <th className={`${thBase} bg-[#C5E8D8] min-w-[180px]`}>HVAC System Pain Points</th>
             <th className={`${thBase} bg-[#C5E8D8] min-w-[200px]`}>
-              Refrigerant / Process / Compliance Complexity
+              Refrigerant / Efficiency / Compliance Complexity
             </th>
             <th className={`${thBase} bg-[#C5E8D8] min-w-[160px]`}>Risk Exposure</th>
             <th className={`${thBase} bg-[#C5E8D8] min-w-[180px]`}>Buying Triggers</th>
@@ -193,8 +193,8 @@ function Proposition2Table() {
               <CustomerInfoCells customer={customer} />
               <ContactCells customer={customer} />
               <td className={tdBase}>{customer.bphePurchaseCriteria}</td>
-              <td className={tdBase}>{customer.processCoolingPainPoints}</td>
-              <td className={tdBase}>{customer.refrigerantProcessCompliance}</td>
+              <td className={tdBase}>{customer.hvacSystemPainPoints}</td>
+              <td className={tdBase}>{customer.refrigerantEfficiencyCompliance}</td>
               <td className={tdBase}>{customer.riskExposure}</td>
               <td className={tdBase}>{customer.buyingTriggers}</td>
             </tr>
@@ -222,10 +222,10 @@ function Proposition3Table() {
               Buy Drivers
             </th>
             <th colSpan={5} className={`${thGroup} bg-[#DDA0DD]`}>
-              Procurement Behaviour Metrics
+              Purchasing Behaviour Metrics
             </th>
             <th colSpan={3} className={`${thGroup} bg-[#DEB887]`}>
-              Solution Requirement
+              Solution Requirements
             </th>
             <th colSpan={2} className={`${thGroup} bg-[#87CEEB]`}>
               CMI Insights
@@ -235,10 +235,10 @@ function Proposition3Table() {
             <th className={`${thBase} bg-gray-100`}>S.No.</th>
             <th className={`${thBase} bg-[#FFF8DC] min-w-[200px]`}>Customer / Company Name</th>
             <th className={`${thBase} bg-[#FFF8DC] min-w-[220px]`}>Business Overview</th>
-            <th className={`${thBase} bg-[#FFF8DC] min-w-[180px]`}>Non-HVAC Customer Entity Type</th>
+            <th className={`${thBase} bg-[#FFF8DC] min-w-[180px]`}>HVAC Customer Entity Type</th>
             <th className={`${thBase} bg-[#FFF8DC] min-w-[220px]`}>Refrigerant-to-Liquid BPHE Application</th>
             <th className={`${thBase} bg-[#FFF8DC] min-w-[200px]`}>
-              Annual Revenue in US$ Million / Process Cooling Budget Signal
+              Annual Revenue in US$ Million / HVAC Equipment Budget Signal
             </th>
             <th className={`${thBase} bg-[#FFF8DC] min-w-[160px]`}>Size / Operating Scale</th>
             <th className={`${thBase} bg-[#B0E0E6] min-w-[140px]`}>Key Contact Person</th>
@@ -248,9 +248,9 @@ function Proposition3Table() {
             <th className={`${thBase} bg-[#B0E0E6] min-w-[160px]`}>LinkedIn Profile</th>
             <th className={`${thBase} bg-[#B0E0E6] min-w-[130px]`}>Website</th>
             <th className={`${thBase} bg-[#C5E8D8] min-w-[180px]`}>BPHE Purchase Criteria</th>
-            <th className={`${thBase} bg-[#C5E8D8] min-w-[180px]`}>Process Cooling Pain Points</th>
+            <th className={`${thBase} bg-[#C5E8D8] min-w-[180px]`}>HVAC System Pain Points</th>
             <th className={`${thBase} bg-[#C5E8D8] min-w-[200px]`}>
-              Refrigerant / Process / Compliance Complexity
+              Refrigerant / Efficiency / Compliance Complexity
             </th>
             <th className={`${thBase} bg-[#C5E8D8] min-w-[160px]`}>Risk Exposure</th>
             <th className={`${thBase} bg-[#C5E8D8] min-w-[180px]`}>Buying Triggers</th>
@@ -276,8 +276,8 @@ function Proposition3Table() {
               <CustomerInfoCells customer={customer} />
               <ContactCells customer={customer} />
               <td className={tdBase}>{customer.bphePurchaseCriteria}</td>
-              <td className={tdBase}>{customer.processCoolingPainPoints}</td>
-              <td className={tdBase}>{customer.refrigerantProcessCompliance}</td>
+              <td className={tdBase}>{customer.hvacSystemPainPoints}</td>
+              <td className={tdBase}>{customer.refrigerantEfficiencyCompliance}</td>
               <td className={tdBase}>{customer.riskExposure}</td>
               <td className={tdBase}>{customer.buyingTriggers}</td>
               <td className={tdBase}>{customer.budgetOwner}</td>
