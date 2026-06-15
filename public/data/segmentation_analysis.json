@@ -1,34 +1,96 @@
 {
-  "Global": {
-    "By Type": {
-      "Sub-Normothermic Perfusion (20–34°C)": {},
-      "Warm or Normothermic Perfusion (35–37°C)": {}
+  "Europe": {
+    "By Product Function": {
+      "Evaporator BPHEs": {
+        "Direct Expansion Evaporators": {},
+        "Flooded Evaporators": {},
+        "Recirculated Evaporators": {}
+      },
+      "Condenser BPHEs": {
+        "Standard Condensers": {},
+        "Heat Recovery Condensers": {}
+      },
+      "Desuperheater BPHEs": {},
+      "Economizer BPHEs": {},
+      "Subcooler BPHEs": {},
+      "Cascade BPHEs": {},
+      "Others (Receiver Subcooler BPHEs, Suction Gas Heat Exchanger BPHEs, Liquid Line Heat Exchanger BPHEs)": {}
     },
-    "By Organ Type": {
-      "Liver": {},
-      "Heart": {},
-      "Lung": {},
-      "Kidney": {},
-      "Others (Pancreas, Small bowel / Intestine, Composite Tissues / Limb Perfusion (emerging use cases))": {}
+    "By Refrigerant Type": {
+      "HFC Refrigerants": {
+        "R134a": {},
+        "R407 Series": {},
+        "Others (R404A, R507A, R410A)": {}
+      },
+      "HFO Refrigerants": {
+        "R1234yf": {},
+        "R1234ze": {},
+        "Others (R1233zd, R1336mzz, etc.)": {}
+      },
+      "Low-GWP Refrigerant Blends": {
+        "R454B": {},
+        "R454C": {},
+        "R455A": {},
+        "R513A": {},
+        "Others (R448A, R449A, R452A, etc.)": {}
+      },
+      "Natural Refrigerants": {
+        "CO2 R744": {},
+        "Ammonia R717": {},
+        "Propane R290": {},
+        "Others (Isobutane R600a, Propylene R1270, etc.)": {}
+      }
     },
-    "Application / Use Case": {
-      "Organ Preservation": {},
-      "Viability Assessment": {},
-      "Physiologic Transport": {},
-      "Reconditioning Marginal Organs": {},
-      "Others (Research Use / Protocol development)": {}
+    "By Liquid Medium": {
+      "Water": {},
+      "Water-Glycol Mixtures": {
+        "Ethylene Glycol": {},
+        "Propylene Glycol": {}
+      },
+      "Brine Solutions": {
+        "Calcium Chloride Brine": {},
+        "Sodium Chloride Brine": {},
+        "Potassium Formate Brine": {},
+        "Potassium Acetate Brine": {},
+        "Others (Magnesium Chloride Brine, Ammonia-Water Brine)": {}
+      },
+      "Specialty Heat Transfer Fluids": {
+        "Food-Grade Heat Transfer Fluids": {},
+        "Dielectric Fluids": {},
+        "Thermal Oils": {}
+      }
     },
-    "By End User": {
-      "Hospitals & Clinics": {},
-      "Specialty Clinic/Centers": {},
-      "Transplant Centers": {},
-      "Others (Research Institutes/Centers, Organ Procurement Organizations, etc.)": {}
+    "By Capacity": {
+      "Up to 10 kW": {},
+      "10 to 50 kW": {},
+      "50 to 200 kW": {},
+      "200 to 1,000 kW": {},
+      "1,000 to 5,000 kW": {},
+      "Above 5,000 kW": {}
+    },
+    "By Installation Type": {
+      "New Installations": {},
+      "Replacement Installations": {},
+      "Retrofit and Refrigerant Conversion Projects": {}
+    },
+    "By End-Use Application": {
+      "Heat Pumps": {
+        "Air-to-Water Heat Pumps": {},
+        "Ground Source Heat Pumps": {},
+        "Water Source Heat Pumps": {},
+        "High Temperature Heat Pumps": {}
+      },
+      "Chillers": {
+        "Air-Cooled Chillers": {},
+        "Water-Cooled Chillers": {},
+        "Heat Recovery Chillers": {}
+      },
+      "District Heating & Cooling Systems": {},
+      "Data Center HVAC Cooling Systems": {},
+      "Thermal Energy Storage Systems": {},
+      "Others (VRF/VRV Systems, Rooftop & Packaged HVAC Systems, etc.)": {}
     },
     "By Region": {
-      "North America": {
-        "U.S.": {},
-        "Canada": {}
-      },
       "Europe": {
         "U.K.": {},
         "Germany": {},
@@ -37,26 +99,6 @@
         "Spain": {},
         "Russia": {},
         "Rest of Europe": {}
-      },
-      "Asia Pacific": {
-        "China": {},
-        "India": {},
-        "Japan": {},
-        "South Korea": {},
-        "ASEAN": {},
-        "Australia": {},
-        "Rest of Asia Pacific": {}
-      },
-      "Latin America": {
-        "Brazil": {},
-        "Argentina": {},
-        "Mexico": {},
-        "Rest of Latin America": {}
-      },
-      "Middle East & Africa": {
-        "GCC": {},
-        "South Africa": {},
-        "Rest of Middle East & Africa": {}
       }
     }
   }

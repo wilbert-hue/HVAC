@@ -1004,9 +1004,13 @@ export function prepareGroupedBarData(
             }
           }
 
-          // Map child geography to parent if parent is selected
+          // Map child geography to parent only when the child is not explicitly selected
           for (const [region, countries] of Object.entries(regionToCountriesStacked)) {
-            if (countries.includes(geography) && geographies.includes(region)) {
+            if (
+              countries.includes(geography) &&
+              geographies.includes(region) &&
+              !geographies.includes(geography)
+            ) {
               geography = region
               break
             }
@@ -1103,7 +1107,11 @@ export function prepareGroupedBarData(
           }
 
           for (const [region, countries] of Object.entries(regionToCountries)) {
-            if (countries.includes(record.geography) && geographies.includes(region)) {
+            if (
+              countries.includes(record.geography) &&
+              geographies.includes(region) &&
+              !geographies.includes(record.geography)
+            ) {
               mappedGeo = region
               break
             }
@@ -1909,10 +1917,14 @@ export function prepareIntelligentMultiLevelData(
         const selectedNonGlobal = geographies.filter(g => g !== 'Global')
         key = selectedNonGlobal[0] || record.geography
       } else {
-        // Map child geographies to parent if parent is selected
+        // Map child geographies to parent only when the child is not explicitly selected
         let mappedGeo = record.geography
         for (const [region, countries] of Object.entries(regionToCountries)) {
-          if (countries.includes(record.geography) && geographies.includes(region)) {
+          if (
+            countries.includes(record.geography) &&
+            geographies.includes(region) &&
+            !geographies.includes(record.geography)
+          ) {
             mappedGeo = region
             break
           }

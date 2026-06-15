@@ -204,7 +204,7 @@ export default function DashboardPage() {
                 Coherent Dashboard
               </h1>
               <h2 className="text-sm text-black">
-                {dashboardName || 'Global Normothermic Machine Perfusion Market'}
+                {dashboardName || 'Europe Refrigerant-to-Liquid Brazed Plate Heat Exchanger BPHE Market '}
               </h2>
             </div>
           </div>
@@ -248,8 +248,12 @@ export default function DashboardPage() {
                   <CustomScrollbar containerRef={sidebarScrollRef}>
                     <div ref={sidebarScrollRef} className="overflow-y-auto pr-6 space-y-3 sidebar-scroll max-h-[calc(100vh-6rem)]">
                       <ChartGroupSelector />
-                      <FilterPresets />
-                      <EnhancedFilterPanel />
+                      {selectedChartGroup !== 'customer-intelligence' && (
+                        <>
+                          <FilterPresets />
+                          <EnhancedFilterPanel />
+                        </>
+                      )}
                     </div>
                   </CustomScrollbar>
                 </div>
@@ -269,6 +273,11 @@ export default function DashboardPage() {
           } space-y-6`}>
 
             {/* Tab Navigation */}
+            {selectedChartGroup === 'customer-intelligence' ? (
+              <div className="bg-white rounded-lg shadow p-6">
+                <CustomerIntelligenceDatabase />
+              </div>
+            ) : (
             <div className="bg-white rounded-lg shadow">
               <div className="border-b border-gray-200">
                 <div className="flex justify-between items-center">
@@ -374,18 +383,6 @@ export default function DashboardPage() {
                             🫧 Bubble Chart
                           </button>
                         )}
-                        {isChartVisible('customer-intelligence') && (
-                          <button
-                            onClick={() => setActiveTab('customer-intelligence')}
-                            className={`px-6 py-3 text-sm font-medium border-b-2 transition-colors ${
-                              activeTab === 'customer-intelligence'
-                                ? 'border-blue-500 text-blue-600'
-                                : 'border-transparent text-black hover:text-black hover:border-gray-300'
-                            }`}
-                          >
-                            👥 Customer Intelligence
-                          </button>
-                        )}
                         {isChartVisible('customer-intelligence-database') && (
                           <button
                             onClick={() => setActiveTab('customer-intelligence-database')}
@@ -395,7 +392,19 @@ export default function DashboardPage() {
                                 : 'border-transparent text-black hover:text-black hover:border-gray-300'
                             }`}
                           >
-                            👤 Customer Intelligence
+                            👥 Customer Intelligence
+                          </button>
+                        )}
+                        {isChartVisible('customer-intelligence') && (
+                          <button
+                            onClick={() => setActiveTab('customer-intelligence')}
+                            className={`px-6 py-3 text-sm font-medium border-b-2 transition-colors ${
+                              activeTab === 'customer-intelligence'
+                                ? 'border-blue-500 text-blue-600'
+                                : 'border-transparent text-black hover:text-black hover:border-gray-300'
+                            }`}
+                          >
+                            👥 Customer Heatmap
                           </button>
                         )}
                       </>
@@ -507,10 +516,7 @@ export default function DashboardPage() {
 
                     {activeTab === 'customer-intelligence-database' && (
                       <div id="customer-intelligence-database-chart">
-                        <CustomerIntelligenceDatabase
-                          title="Customer Intelligence Database"
-                          height={600}
-                        />
+                        <CustomerIntelligenceDatabase />
                       </div>
                     )}
                   </>
@@ -605,17 +611,14 @@ export default function DashboardPage() {
 
                     {isChartVisible('customer-intelligence-database') && (
                       <div className="border-b pb-8">
-                        <h3 className="text-lg font-semibold text-black mb-4">👤 Customer Intelligence Database</h3>
-                        <CustomerIntelligenceDatabase
-                          title="Customer Intelligence Database"
-                          height={600}
-                        />
+                        <CustomerIntelligenceDatabase />
                       </div>
                     )}
                   </div>
                 )}
               </div>
             </div>
+            )}
           </main>
 
           {/* Insights Panel */}

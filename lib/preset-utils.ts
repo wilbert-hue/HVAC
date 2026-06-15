@@ -6,6 +6,48 @@
 import type { ComparisonData, DataRecord, FilterState } from './types'
 
 /**
+ * Calculate top countries based on market value for a specific year.
+ * Excludes parent regions so results are non-overlapping geographies.
+ */
+export function getTopCountriesByMarketValue(
+  data: ComparisonData | null,
+  year: number = 2023,
+  topN: number = 3
+): string[] {
+  if (!data) return []
+
+  const records = data.data.value.geography_segment_matrix
+  const regions = new Set(data.dimensions.geographies.regions || [])
+  const firstSegmentType = getFirstSegmentType(data)
+
+  const geographyTotals = new Map<string, number>()
+
+  records.forEach((record: DataRecord) => {
+    const geography = record.geography
+    if (geography === 'Global' || regions.has(geography)) return
+
+    // Use level-2 aggregated parent segments from the primary segment type
+    // to avoid double-counting children and mixing segment types unfairly
+    if (
+      firstSegmentType &&
+      (record.segment_type !== firstSegmentType ||
+        record.aggregation_level !== 2 ||
+        !record.is_aggregated)
+    ) {
+      return
+    }
+
+    const value = record.time_series[year] || 0
+    geographyTotals.set(geography, (geographyTotals.get(geography) || 0) + value)
+  })
+
+  return Array.from(geographyTotals.entries())
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, topN)
+    .map(([geography]) => geography)
+}
+
+/**
  * Calculate top regions based on market value for a specific year
  * @param data - The comparison data
  * @param year - The year to evaluate (default 2024)
@@ -17,34 +59,7 @@ export function getTopRegionsByMarketValue(
   year: number = 2023,
   topN: number = 3
 ): string[] {
-  if (!data) return []
-
-  // Get all value data records
-  const records = data.data.value.geography_segment_matrix
-
-  // Calculate total market value by geography for the specified year
-  // Treat all geographies as single entities - aggregate by name
-  const geographyTotals = new Map<string, number>()
-
-  records.forEach((record: DataRecord) => {
-    const geography = record.geography
-    const value = record.time_series[year] || 0
-
-    // Skip global level
-    if (geography === 'Global') return
-
-    // Treat all geographies as single entities - aggregate by name
-    const currentTotal = geographyTotals.get(geography) || 0
-    geographyTotals.set(geography, currentTotal + value)
-  })
-
-  // Sort geographies by total value and get top N
-  const sortedGeographies = Array.from(geographyTotals.entries())
-    .sort((a, b) => b[1] - a[1]) // Sort by value descending
-    .slice(0, topN)
-    .map(([geography]) => geography)
-
-  return sortedGeographies
+  return getTopCountriesByMarketValue(data, year, topN)
 }
 
 /**
@@ -200,17 +215,14 @@ export function getTopCountriesByCAGR(
  * @returns Partial FilterState with dynamic values
  */
 export function createTopMarketFilters(data: ComparisonData | null): Partial<FilterState> {
-  const topRegions = getTopRegionsByMarketValue(data, 2023, 3)
+  const topCountries = getTopCountriesByMarketValue(data, 2023, 3)
   const firstSegmentType = getFirstSegmentType(data)
-  const firstLevelSegments = firstSegmentType
-    ? getFirstLevelSegments(data, firstSegmentType)
-    : []
 
   return {
-    viewMode: 'geography-mode', // Geography on X-axis, segments as series
-    geographies: topRegions,
-    segments: firstLevelSegments,
-    segmentType: firstSegmentType || 'By Technology',
+    viewMode: 'geography-mode',
+    geographies: topCountries,
+    segments: [],
+    segmentType: firstSegmentType || 'By Product Function',
     yearRange: [2023, 2027],
     dataType: 'value'
   }
@@ -238,7 +250,7 @@ export function createGrowthLeadersFilters(data: ComparisonData | null): Partial
     viewMode: 'geography-mode', // Geography on X-axis, segments as series
     geographies: topRegions,
     segments: firstLevelSegments,
-    segmentType: firstSegmentType || 'By Technology',
+    segmentType: firstSegmentType || 'By Product Function',
     yearRange: [2025, 2031],
     dataType: 'value'
   }
@@ -266,7 +278,7 @@ export function createEmergingMarketsFilters(data: ComparisonData | null): Parti
     viewMode: 'geography-mode', // Geography on X-axis, segments as series
     geographies: topCountries,
     segments: firstLevelSegments,
-    segmentType: firstSegmentType || 'By Technology',
+    segmentType: firstSegmentType || 'By Product Function',
     yearRange: [2025, 2031],
     dataType: 'value'
   }
