@@ -1473,7 +1473,7 @@ export async function processJsonDataAsync(
     
     // Build metadata
     const metadata: Metadata = {
-      market_name: 'Refrigerant-to-Liquid Brazed Plate Heat Exchanger BPHE Market',
+      market_name: 'Refrigerant-to-Liquid Brazed Plate Heat Exchanger (BPHE) Market (Focus on HVAC Applications Only)',
       market_type: 'Market Analysis',
       industry: 'Healthcare & Pharmaceuticals',
       years: allYears,
